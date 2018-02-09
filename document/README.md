@@ -7,7 +7,8 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">在线demo</a> |
+    🐾<a href="https://chenxuan0000.github.io/component-document/index_prod.html#/component/svg-bar-default">在线 demo</a> |
+    🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">小 demo</a> |
     📘 <a href="../README.md">英文文档</a>
 </p>
 
@@ -36,15 +37,24 @@ npm install svg-progress-bar --save
 ### ES6
 > 详细介绍 [example-src/App.vue](https://github.com/chenxuan0000/svg-progress-bar/blob/master/examples-src/App.vue)
 
-```js
-import Vue from 'vue'
-import vueProgressBar from 'svg-progress-bar'
 
-new Vue({
-  components: {
-    vueProgressBar
-  }
-})
+```js
+// **main.js**
+// 1.全局 install
+import Vue from 'vue'
+import svg from 'svg-progress-bar'
+// 你可以自己设置全局注册的组件名 默认注册的组件名是 svg-progress-bar
+Vue.use(svg,{componentName: 'percent-bar'})
+
+// 2.单个.vue文件局部注册
+<script>
+  import svg from 'svg-progress-bar'
+   export default {
+      components: {
+        svg
+      }
+   }
+</script>
 ```
 
 ### 普通模式 (script引入 )
@@ -76,11 +86,12 @@ new Vue({
 |:---|---|---|---|
 |`type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
 |`value`|进度条的初始值|`0`|`Number` `String`|
-|`options`|进度条的options对象参数|`{}`|`Object`|
 |`valAddCalBack`|进度条value变化对应节点的回调事件|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
+|`options`|进度条的options对象参数|`{}`|`Object`|
 |`options.radius`|环形进度条半径|`50`|`Number`|
+|`options.valRate`|value每次增加的幅度(建议<=1)|`1`|`Number`|
 |`options.circleWidth`|环形进度条线宽|`10`|`Number`|
-|`options.circleWidthArray`|如果你想要不等宽的环形条可以设置环形进度条线宽度组|`null`|`Array`|
+|`options.varyStrokeArray`|如果你想要不等宽的环形条或者柱形条可以设置宽度/高度组|`null`|`Array`|
 |`options.circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|
 |`options.maxValue`|进度条的最大值|`100`|`Number`|
 |`options.text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
@@ -92,6 +103,9 @@ new Vue({
 |`options.rectWidth`|矩形进度条的宽度|`400`|`Number`|
 |`options.rectHeight`|矩形进度条的高度|`40`|`Number`|
 |`options.rectRadius`|矩形进度条的圆角度|`0`|`Number`|
+
+## 历史版本
+See the GitHub [历史版本](https://github.com/chenxuan0000/svg-progress-bar/releases).
 
 
 ## License

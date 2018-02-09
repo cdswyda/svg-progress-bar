@@ -23,13 +23,13 @@
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Default circle</div>
                         <div class="tc">
-                            <progress-bar value="65.55"></progress-bar>
+                            <progress-bar value="65"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Default rect</div>
                         <div class="tc">
-                            <progress-bar value="65.55" type="rect"></progress-bar>
+                            <progress-bar value="65" type="rect"></progress-bar>
                         </div>
                     </div>
                 </div>
@@ -45,13 +45,37 @@
                         </div>
                         <div class="tc" style="position: relative;">
                             <div class="dot-test">
-                                <span class="one" :class="{active: dotValArr.per20}"><span class="text" v-text="dotValArr.per20"></span></span>
-                                <span class="two" :class="{active: dotValArr.per40}"><span class="text" v-text="dotValArr.per40"></span></span>
-                                <span class="three" :class="{active: dotValArr.per60}"><span class="text" v-text="dotValArr.per60"></span></span>
-                                <span class="four" :class="{active: dotValArr.per80}"><span class="text" v-text="dotValArr.per80"></span></span>
+                                <span class="one" :class="{active: dotValArr.per20}"><span class="text"
+                                                                                           v-text="dotValArr.per20"></span></span>
+                                <span class="two" :class="{active: dotValArr.per40}"><span class="text"
+                                                                                           v-text="dotValArr.per40"></span></span>
+                                <span class="three" :class="{active: dotValArr.per60}"><span class="text"
+                                                                                             v-text="dotValArr.per60"></span></span>
+                                <span class="four" :class="{active: dotValArr.per80}"><span class="text"
+                                                                                            v-text="dotValArr.per80"></span></span>
                             </div>
                             <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack1"
                                           :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>
+                        </div>
+                    </div>
+                    <!--valAddCalBack of svg bar2-->
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">Custom <span
+                                class="normal"> valAddCalBack of svg bar (带小数值变化回调的svg bar)</span>
+                        </div>
+                        <div class="tc" style="position: relative;">
+                            <div class="dot-test">
+                                <span class="one2" :class="{active: dotValArr2.per1}"><span class="text"
+                                                                                            v-text="dotValArr2.per1"></span></span>
+                                <span class="two2" :class="{active: dotValArr2.per2}"><span class="text"
+                                                                                            v-text="dotValArr2.per2"></span></span>
+                                <span class="three2" :class="{active: dotValArr2.per3}"><span class="text"
+                                                                                              v-text="dotValArr2.per3"></span></span>
+                                <span class="four2" :class="{active: dotValArr2.per4}"><span class="text"
+                                                                                             v-text="dotValArr2.per4"></span></span>
+                            </div>
+                            <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack2"
+                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',valRate: 0.28,pathColors: ['#bbb','yellow']}"></progress-bar>
                         </div>
                     </div>
                     <!--自定义路径颜色-->
@@ -85,19 +109,19 @@
                     <!--自定义两条路径宽度-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom Wide ranging <span
-                                class="normal"> circleWidthArray (自定义两条路径宽度) ([10,20])</span></div>
+                                class="normal"> varyStrokeArray (自定义两条路径宽度) ([10,20])</span></div>
                         <div class="tc">
                             <progress-bar value="70"
-                                          :options="{radius:189,circleLineCap: 'round',circleWidthArray: [10,20]}"></progress-bar>
+                                          :options="{radius:189,circleLineCap: 'round',varyStrokeArray: [10,20]}"></progress-bar>
                         </div>
                     </div>
                     <!--自定义两条路径宽度-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom Wide ranging <span
-                                class="normal"> circleWidthArray (自定义两条路径宽度) ([30,15])</span></div>
+                                class="normal"> varyStrokeArray (自定义两条路径宽度) ([30,15])</span></div>
                         <div class="tc">
                             <progress-bar value="70"
-                                          :options="{radius:189,circleLineCap: 'round',circleWidthArray: [30,15]}"></progress-bar>
+                                          :options="{radius:189,circleLineCap: 'round',varyStrokeArray: [30,15]}"></progress-bar>
                         </div>
                     </div>
                     <!--自定义文本格式-->
@@ -149,6 +173,36 @@
                                           :options="{text: ''}"></progress-bar>
                         </div>
                     </div>
+                    <!--不等高度的rect1-->
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">
+                            Custom rect <span class="normal">varyStrokeArray (自定义两条路径高度) ([10,20])</span>
+                        </div>
+                        <div class="tc">
+                            <progress-bar value="66" type="rect"
+                                          :options="{varyStrokeArray: [10,20]}"></progress-bar>
+                        </div>
+                    </div>
+                    <!--不等高度的rect2-->
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">
+                            Custom rect <span class="normal">varyStrokeArray (自定义两条路径高度) ([30,10])</span>
+                        </div>
+                        <div class="tc">
+                            <progress-bar value="66" type="rect"
+                                          :options="{varyStrokeArray: [30,10]}"></progress-bar>
+                        </div>
+                    </div>
+                    <!--数值增长的幅度-->
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">
+                            Custom rect <span class="normal">valRate (数值增长的幅度) (.1)</span>
+                        </div>
+                        <div class="tc">
+                            <progress-bar value="66" type="rect"
+                                          :options="{valRate: 0.1}"></progress-bar>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,6 +221,12 @@
           per40: '',
           per60: '',
           per80: ''
+        },
+        dotValArr2: {
+          per1: '',
+          per2: '',
+          per3: '',
+          per4: ''
         }
       }
     },
@@ -215,6 +275,44 @@
           }
         ]
       },
+      valAddCalBack2 () {
+        return [
+          {
+            value: 16.67,
+            func: () => {
+              this.dotValArr2.per1 = 16.67
+            }
+          },
+          {
+            value: 33.33,
+            func: () => {
+              this.dotValArr2.per2 = 33.33
+            }
+          },
+          {
+            value: 50,
+            func: () => {
+              this.dotValArr2.per3 = 50
+            }
+          },
+          {
+            value: 66.67,
+            func: () => {
+              this.dotValArr2.per4 = 66.67
+            }
+          },
+          {
+            value: 83.33,
+            func: () => {
+            }
+          },
+          {
+            value: 100,
+            func: () => {
+            }
+          }
+        ]
+      },
       options1 () {
         return {
           radius: 80,
@@ -244,7 +342,7 @@
             height: 10px;
             top: 5px;
             border: 4px solid #e80707;
-            transform: translate(-50%,-18%);
+            transform: translate(-50%, -18%);
             border-radius: 50%;
             &.active {
                 width: 14px;
@@ -268,6 +366,18 @@
             }
             &.four {
                 left: 80%;
+            }
+            &.one2 {
+                left: 16.67%;
+            }
+            &.two2 {
+                left: 33.33%;
+            }
+            &.three2 {
+                left: 50%;
+            }
+            &.four2 {
+                left: 66.67%;
             }
         }
     }

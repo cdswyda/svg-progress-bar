@@ -7,7 +7,8 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-   🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">Online demo</a> |
+   🐾<a href="https://chenxuan0000.github.io/component-document/index_prod.html#/component/svg-bar-default">online demo</a> |
+   🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">simple demo</a> |
    📘 <a href="./document/README.md">Chinese Document</a>
 </p>
 
@@ -38,15 +39,28 @@ npm install svg-progress-bar --save
 > Specific reference [example-src/App.vue](https://github.com/chenxuan0000/svg-progress-bar/blob/master/examples-src/App.vue)
 
 ```js
+// **main.js**
 import Vue from 'vue'
-import vueProgressBar from 'svg-progress-bar'
+import svg from 'svg-progress-bar'
+// you can set componentName default componentName is svg-progress-bar
+Vue.use(svg,{componentName: 'percent-bar'})
+// 1.global install
+import Vue from 'vue'
+import svg from 'svg-progress-bar'
+// you can set custom componentName
+Vue.use(svg,{componentName: 'percent-bar'})
 
-new Vue({
-  components: {
-    vueProgressBar
-  }
-})
+// 2.single .vue file install
+<script>
+  import svg from 'svg-progress-bar'
+   export default {
+      components: {
+        svg
+      }
+   }
+</script>
 ```
+s
 
 ### normal use (script tag)
 
@@ -77,11 +91,12 @@ Example:
 |:---|---|---|---|
 |`type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
 |`value`|value of the progress bar|`0`|`Number` `String`|
-|`options`|options of the progress bar|`{}`|`Object`|
 |`valAddCalBack`|valAddCalBack of the progress bar|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
+|`options`|options of the progress bar|`{}`|`Object`|
+|`options.valRate`|value add Rate of the circle progress bar(suggest <= 1)|`1`|`Number`|
 |`options.radius`|radius of the circle progress bar|`50`|`Number`|
 |`options.circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
-|`options.circleWidthArray`|circleWidthArray of the circle progress bar if you want wide ranging|`null`|`Array`|
+|`options.varyStrokeArray`|varyStrokeArray of the circle progress bar if you want wide ranging|`null`|`Array`|
 |`options.circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
 |`options.maxValue`|maxValue of the progress bar|`100`|`Number`|
 |`options.text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
@@ -94,6 +109,8 @@ Example:
 |`options.rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|
 |`options.rectRadius`|rectRadius of the rect progress bar|`0`|`Number`|
 
+## Changelog
+See the GitHub [release history](https://github.com/chenxuan0000/svg-progress-bar/releases).
 
 ## License
 svg-progress-bar is open source and released under the [MIT License](LICENSE).

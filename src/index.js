@@ -1,10 +1,12 @@
 import vueProgress from './components/progress-bar.vue'
 
-// expose component to global scope
-if (typeof window !== 'undefined' && window.Vue) {
-  Vue.component('svg-progress-bar', vueProgress)
+vueProgress.install = function (Vue, options = {}) {
+  Vue.component(options.componentName || vueProgress.name, vueProgress)
 }
 
-export { vueProgress }
+// auto install
+if (typeof window !== 'undefined' && window.Vue) {
+  Vue.component(vueProgress.name, vueProgress)
+}
 
 export default vueProgress
